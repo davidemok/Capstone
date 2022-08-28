@@ -55,7 +55,7 @@ p{
 }
 
 header{
-    background-image: url('/week_7/capstone/project/images/indigoGarden.jpg')
+    background-image: url('./images/indigoGarden.jpg')
 }
 
 .productBox{
@@ -72,4 +72,17 @@ header{
     justify-content: space-around;
     align-items: flex-start;
     margin: 70px 0;
+}
+.cart{
+    color: black;
+    background-color: lightblue;
+    transition-duration: 0.4s;
+}
+.cart:hover{
+    background-color: greenyellow
+}
+#footer{
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
