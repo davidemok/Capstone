@@ -18,16 +18,17 @@ function add1(evt){
     evt.preventDefault();
     if(count1 === 0){
     console.log("added product 1 to shopping cart")
-    axios.get(`${URL}/add1`)}
-    else{axios.get(`${URL}/plus1`)}
     count1=1;
+    axios.get(`${URL}/add1`)}
+    else{axios.put(`${URL}/plus1`)}
+    
 }
 function add2(evt){
     evt.preventDefault();
     if(count2===0){
     console.log("added product 2 to shopping cart")
     axios.get(`${URL}/add2`)}
-    else{axios.get(`${URL}/plus2`)}
+    else{axios.put(`${URL}/plus2`)}
     count2=1;
 }
 function add3(evt){
@@ -35,7 +36,7 @@ function add3(evt){
     if(count3===0){
     console.log("added product 3 to shopping cart")
     axios.get(`${URL}/add3`)}
-    else{axios.get(`${URL}/plus3`)}
+    else{axios.put(`${URL}/plus3`)}
     count3=1;
 }
 function add4(evt){
@@ -43,7 +44,7 @@ function add4(evt){
     if(count4===0){
     console.log("added product 4 to shopping cart")
     axios.get(`${URL}/add4`)}
-    else{axios.get(`${URL}/plus4`)}
+    else{axios.put(`${URL}/plus4`)}
     count4=1;
 }
 function add5(evt){
@@ -51,7 +52,7 @@ function add5(evt){
     if(count5===0){
     console.log("added product 5 to shopping cart")
     axios.get(`${URL}/add5`)}
-    else{axios.get(`${URL}/plus5`)}
+    else{axios.put(`${URL}/plus5`)}
     count5=1;
 }
 function add6(evt){
@@ -59,7 +60,7 @@ function add6(evt){
     if(count6===0){
     console.log("added product 6 to shopping cart")
     axios.get(`${URL}/add6`)}
-    else{axios.get(`${URL}/plus6`)}
+    else{axios.put(`${URL}/plus6`)}
     count6=1;
 }
 

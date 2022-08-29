@@ -13,7 +13,7 @@ module.exports = {
         DROP TABLE IF EXISTS cart;
 
         CREATE TABLE cart (
-            product VARCHAR,
+            productId INTEGER,
             quantity INTEGER,
             price FLOAT
         );`)
@@ -24,86 +24,84 @@ module.exports = {
     },
 
     add1: (req, res) => {
-        sequelize.query(`INSERT INTO cart (product, quantity, price)
-        VALUES ('product 1', 1, 5.99);`)
+        sequelize.query(`INSERT INTO cart (productId, quantity, price)
+        VALUES (1, 1, 5.99);`)
         .then(dbRes => {res.status(200);
         console.log("Bubberduck, the product has been added to the cart")})
     },
     add2: (req, res) => {
-        sequelize.query(`INSERT INTO cart (product, quantity, price)
-        VALUES ('product 2', 1, 10.99);`)
+        sequelize.query(`INSERT INTO cart (productId, quantity, price)
+        VALUES (2, 1, 10.99);`)
         .then(dbRes => {res.status(200);
             console.log("Bubberduck, the quantity has been added")})
     },
     add3: (req, res) => {
-        sequelize.query(`INSERT INTO cart (product, quantity, price)
-        VALUES ('product 3', 1, 3.99);`)
+        sequelize.query(`INSERT INTO cart (productId, quantity, price)
+        VALUES (3, 1, 3.99);`)
         .then(dbRes => {res.status(200);
             console.log("Bubberduck, the quantity has been added")})
     },
     add4: (req, res) => {
-        sequelize.query(`INSERT INTO cart (product, quantity, price)
-        VALUES ('product 4', 1, 7.99);`)
+        sequelize.query(`INSERT INTO cart (productId, quantity, price)
+        VALUES (4, 1, 7.99);`)
         .then(dbRes => {res.status(200);
             console.log("Bubberduck, the quantity has been added")})
     },
     add5: (req, res) => {
-        sequelize.query(`INSERT INTO cart (product, quantity, price)
-        VALUES ('product 5', 1, 8.99);`)
+        sequelize.query(`INSERT INTO cart (productId, quantity, price)
+        VALUES (5, 1, 8.99);`)
         .then(dbRes => {res.status(200);
             console.log("Bubberduck, the quantity has been added")})
     },
     add6: (req, res) => {
-        sequelize.query(`INSERT INTO cart (product, quantity, price)
-        VALUES ('product 6', 1, 99.99);`)
+        sequelize.query(`INSERT INTO cart (productId, quantity, price)
+        VALUES (6, 1, 99.99);`)
         .then(dbRes => {res.status(200);
             console.log("Bubberduck, the quantity has been added")})
     },
     getTable: (req, res) => {
-        sequelize.query(`SELECT * FROM cart ORDER BY product ASC`)
+        sequelize.query(`SELECT * FROM cart ORDER BY productId ASC`)
         .then(dbRes => {res.status(200).send(dbRes[0])
         console.log("Bubberduck, we got the table")})
     },
     plus1: (req, res) => {
-        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE product = 'product 1'`)
-        .then(dbRes => {res.status(200).send(dbRes[0])})
+        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = 1`)
+        .then(dbRes => {res.status(200)})
     },
     plus2: (req, res) => {
-        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE product = 'product 2'`)
-        .then(dbRes => {res.status(200).send(dbRes[0])})
+        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = 2`)
+        .then(dbRes => {res.status(200)})
     },
     plus3: (req, res) => {
-        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE product = 'product 3'`)
-        .then(dbRes => {res.status(200).send(dbRes[0])})
+        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = 3`)
+        .then(dbRes => {res.status(200)})
     },
     plus4: (req, res) => {
-        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE product = 'product 4'`)
-        .then(dbRes => {res.status(200).send(dbRes[0])})
+        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = 4`)
+        .then(dbRes => {res.status(200)})
     },
     plus5: (req, res) => {
-        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE product = 'product 5'`)
-        .then(dbRes => {res.status(200).send(dbRes[0])})
+        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = 5`)
+        .then(dbRes => {res.status(200)})
     },
     plus6: (req, res) => {
-        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE product = 'product 6'`)
-        .then(dbRes => {res.status(200).send(dbRes[0])})
+        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = 6`)
+        .then(dbRes => {res.status(200)})
     },
     updateProduct: (req, res) => {
         let type = req.body.type;
-        console.log(req.body)
+        console.log("hit")
+        let num = sequelize.query(`SELECT quantity FROM cart WHERE productId = ${req.params.id}`)
         if(type === "plus"){
-        sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE product = '${req.body.id}'`)
-        .then(dbRes => {console.log("bubberducky?")
-        res.status(200).send(dbRes[0])})}
-        else if(type ==="minus"){
-            sequelize.query(`UPDATE cart SET quantity = quantity - 1 WHERE product = '${req.body.id}'`)
-            .then(dbRes => {console.log("am i exist")
-                res.status(200).send(dbRes[0])})}
+            sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = ${req.params.id}`)
+            .then(dbRes => {res.status(200)})}
+        else if(type === "minus"){
+                sequelize.query(`UPDATE cart SET quantity = quantity - 1 WHERE productId = ${req.params.id}`)
+                .then(dbRes => {res.status(200)})}
     },
     deleteProduct: (req, res) => {
-        sequelize.query(`DELETE FROM cart WHERE product = 'req.body.id'`)
-        .then(dbRes => {console.log("did i work")
-        res.status(200)})
+        sequelize.query(`DELETE FROM cart WHERE productId = ${req.params.id}`)
+        .then(dbRes => {res.status(200)})
     }
 
 }

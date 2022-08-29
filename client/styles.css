@@ -86,3 +86,20 @@ header{
     width: 100%;
     text-align: center;
 }
+#cartList{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.cart-card{
+    text-align: center;
+    align-items: center;
+}
+#totalCard{
+    text-align: center;
+    align-items: center;
+}
+#about{
+    text-align: center;
+    align-items: center;
+}
