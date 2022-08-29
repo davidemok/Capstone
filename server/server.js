@@ -8,7 +8,7 @@ const {SERVER_PORT} = process.env
 app.use(cors())
 app.use(express.json())
 
-const { seed, add1, add2, add3, add4, add5, add6, getTable } = require("./controller/controller")
+const { seed, add1, add2, add3, add4, add5, add6, plus1, plus2, plus3, plus4, plus5, plus6, getTable, updateProduct, deleteProduct } = require("./controller/controller")
 
 app.use(express.static('client'))
 
@@ -19,6 +19,14 @@ app.get('/add3', add3)
 app.get('/add4', add4)
 app.get('/add5', add5)
 app.get('/add6', add6)
+app.get('/plus1', plus1)
+app.get('/plus2', plus2)
+app.get('/plus3', plus3)
+app.get('/plus4', plus4)
+app.get('/plus5', plus5)
+app.get('/plus6', plus6)
 app.get('/cart', getTable)
+app.put('/${id}', updateProduct)
+app.delete('/${id}', deleteProduct)
 
 app.listen(SERVER_PORT, console.log(`Bubberduck, we are a go at ${SERVER_PORT}`))
