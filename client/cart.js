@@ -3,8 +3,7 @@ const price = document.querySelector('#price')
 
 const URL = 'http://localhost:4000'
 
-function updateProduct(id, type){axios.put(`${URL}/cart/${id}`, {type}).then(() => {console.log("hit")
-    getTable()})}
+function updateProduct(id, type){axios.put(`${URL}/cart/${id}`, {type}).then(getTable())}
 
 function deleteProduct(id){axios.delete(`${URL}/cart/${id}`).then(getTable())}
 
