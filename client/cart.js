@@ -17,8 +17,27 @@ const getTable = async() => {
     const cart = await fetchCart()
     let total = 0;
     cart.forEach(elem => {
+        let img=1
+                if(elem.productid===1){
+                    img = './images/shawl.png'
+                }else if(elem.productid===2){
+                    img = './images/bag.png'
+                }
+                else if(elem.productid===3){
+                    img = './images/quilt.png'
+                }
+                else if(elem.productid===4){
+                    img = './images/cardigan.png'
+                }
+                else if(elem.productid===5){
+                    img = './images/bustier.png'
+                }
+                else if(elem.productid===6){
+                    img = './images/pochette.png'
+                }
                 let cartCard = `<div class="cart-card">
-                    <h2>${elem.productid}</h2>
+                    <h2>${elem.productname}</h2>
+                    <img class = "cart_img" src=${img} alt="product">
                     <h3>Price: ${elem.price}</h3>
                     <h3>Quantity: ${elem.quantity}<h3>
                     <div>
