@@ -3,18 +3,20 @@ const price = document.querySelector('#price')
 
 const URL = 'http://localhost:4000'
 
+const fetchCart = async() => {
+    const response =  await axios.get(`${URL}/cart`)
+    return response.data
+}
 function updateProduct(id, type){axios.put(`${URL}/cart/${id}`, {type}).then(getTable())}
 
 function deleteProduct(id){axios.delete(`${URL}/cart/${id}`).then(getTable())}
 
-function getTable() {
-    console.log("hit")
+const getTable = async() => {
     cartList.innerHTML = ''
     price.innerHTML = ''
-    axios.get(`${URL}/cart`)
-        .then(res => {
-            let total = 0;
-            res.data.forEach(elem => {
+    const cart = await fetchCart()
+    let total = 0;
+    cart.forEach(elem => {
                 let cartCard = `<div class="cart-card">
                     <h2>${elem.productid}</h2>
                     <h3>Price: ${elem.price}</h3>
@@ -29,15 +31,13 @@ function getTable() {
                     </div>`
                 cartList.innerHTML += cartCard
                 total += (elem.price * elem.quantity)
-                console.log("hit")
             })
             total = total.toFixed(2)
             let totalCard = `<div id="totalCard">
             <h1>Total Price ${total}</h1>
             </div>`
             price.innerHTML = totalCard
-        })
-}
+        }
 
 getTable()
 
