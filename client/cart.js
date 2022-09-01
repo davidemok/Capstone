@@ -7,9 +7,29 @@ const fetchCart = async() => {
     const response =  await axios.get(`${URL}/cart`)
     return response.data
 }
-function updateProduct(id, type){axios.put(`${URL}/cart/${id}`, {type}).then(getTable())}
+function updateProduct(id, type){
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'updated!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 900,
+    });
+  axios.put(`${URL}/cart/${id}`, {type}).then(getTable())}
 
-function deleteProduct(id){axios.delete(`${URL}/cart/${id}`).then(getTable())}
+function deleteProduct(id){
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'deleted!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 900,
+      });
+      axios.delete(`${URL}/cart/${id}`).then(getTable())}
 
 const getTable = async() => {
     cartList.innerHTML = ''
@@ -35,17 +55,24 @@ const getTable = async() => {
                 else if(elem.productid===6){
                     img = './images/pochette.png'
                 }
+                
                 let cartCard = `<div class="cart-card">
-                    <h2>${elem.productname}</h2>
+                    <div class = "cart_img_block">
                     <img class = "cart_img" src=${img} alt="product">
-                    <h3>Price: ${elem.price}</h3>
+                    </div>
+                    <div class = "cart_numbers">
+                    <h3>${elem.productname}</h3>
+                    <h3>Price: $${elem.price}</h3>
                     <h3>Quantity: ${elem.quantity}<h3>
-                    <div>
+                    </div>
+                    <div class = "cart_buttons">
+                    <div class = "adjust_buttons">
                     <button onclick="updateProduct('${elem.productid}', 'plus')" class = 'adjust'>+</button>
                     <button onclick="updateProduct('${elem.productid}', 'minus')" class = 'adjust'>-</button>
                     </div>
                     <div>
                     <button onclick="deleteProduct(${elem.productid})" class = 'delete'>delete</button>
+                    </div>
                     </div>
                     </div>`
                 cartList.innerHTML += cartCard
@@ -53,7 +80,7 @@ const getTable = async() => {
             })
             total = total.toFixed(2)
             let totalCard = `<div id="totalCard">
-            <h1>Total Price ${total}</h1>
+            <h1>Total Price $${total}</h1>
             </div>`
             price.innerHTML = totalCard
         }

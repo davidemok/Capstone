@@ -1,0 +1,11 @@
+Hello everyone! I'm David and I created a shopping website for my wife using HTML, CSS, Javascript, express, axios, and Postgres SQL. 
+
+You can add products to the cart on the home page, and if you click on it a second time it will update the quantity by one. The cart itself is stored in a database, and my functions interact with that database. I wanted to create an alert that would notify you when you click on a button, but I didn't want to use the annoying vanilla javascript alert, so I found a custom alert called SweetAlert to post the added alerts to the bottom of the page. 
+
+I'll go ahead and add one of everything else to the cart and let's take a look. 
+
+Here in the cart page the HTML elements are loaded in from the database. You can also add or subtract to the quantity, and you can delete the item entirely. The total price feature keeps track of the sum. I've implemented a counter in the backend so if I delete something in the cart, the server knows that I deleted it from the database and if I navigate back to the home page and click on it again it will insert it back in to the cart instead of updating the quantity of something that doesn't exist. 
+
+I also made a small about page, written by my wife.
+
+My wife has an Etsy store, and I thought it would be a good opportunity to create a website for her that highlights some of her favorite products. I also thought it would be a good challenge to implement an interactable database. The styling itself is done with basic css, which was great practice.

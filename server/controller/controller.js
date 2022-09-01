@@ -34,7 +34,7 @@ module.exports = {
         if(count1 === 0){
             count1 = 1
             sequelize.query(`INSERT INTO cart (productid, productname, quantity, price)
-            VALUES (1, 'Ginkgo Shoulderette Shawl', 1, 5.99)`)
+            VALUES (1, 'Ginkgo Shoulderette Shawl', 1, 85)`)
             .then(dbRes => {res.status(200).send("added to cart")})}
         else{
             sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = 1`)
@@ -46,7 +46,7 @@ module.exports = {
         if(count2===0){
             count2=1;
             sequelize.query(`INSERT INTO cart (productId, productname, quantity, price)
-            VALUES (2, 'Van Gogh Tote Bag', 1, 10.99);`)
+            VALUES (2, 'Van Gogh Tote Bag', 1, 45);`)
             .then(dbRes => {res.status(200).send("inserted")})
         }
         else{
@@ -58,7 +58,7 @@ module.exports = {
         if(count3===0){
             count3=1;
             sequelize.query(`INSERT INTO cart (productId, productName, quantity, price) 
-            VALUES (3, 'Valentine Block Quilt', 1, 3.99);`)
+            VALUES (3, 'Valentine Block Quilt', 1, 250);`)
             .then(dbRes => {res.status(200).send("inserted")})
         }
         else{
@@ -70,7 +70,7 @@ module.exports = {
         if(count4===0){
             count4=1
             sequelize.query(`INSERT INTO cart (productId, productname, quantity, price)
-            VALUES (4, 'Cheese In The Trap Cardigan', 1, 7.99);`)
+            VALUES (4, 'Cheese In The Trap Cardigan', 1, 350);`)
             .then(dbRes => {res.status(200).send("inserted")})
     }
     else{
@@ -82,7 +82,7 @@ module.exports = {
         if(count5===0){
             count5=1;
             sequelize.query(`INSERT INTO cart (productId, productname, quantity, price)
-            VALUES (5, 'Faux Fur Heart Bustier', 1, 8.99);`)
+            VALUES (5, 'Faux Fur Heart Bustier', 1, 180);`)
             .then(dbRes => {res.status(200).send("inserted")})
     }
     else{
@@ -94,7 +94,7 @@ module.exports = {
         if(count6===0){
             count6=1;
             sequelize.query(`INSERT INTO cart (productId, productname, quantity, price)
-            VALUES (6, 'ACNH Fish Pochette', 1, 99.99);`)
+            VALUES (6, 'ACNH Fish Pochette', 1, 70);`)
             .then(dbRes => {res.status(200).send("inserted")})
         }
         else{
@@ -108,7 +108,6 @@ module.exports = {
     },
     updateProduct: (req, res) => {
         let type = req.body.type;
-        let num = sequelize.query(`SELECT quantity FROM cart WHERE productId = ${req.params.id}`)
         if(type === "plus"){
             sequelize.query(`UPDATE cart SET quantity = quantity + 1 WHERE productId = ${req.params.id}`)
             .then(dbRes => {res.status(200).send("hi")})}
@@ -117,25 +116,24 @@ module.exports = {
                 .then(dbRes => {res.status(200).send("hi")})}
     },
     deleteProduct: (req, res) => {
-        if(req.params.id === 1){
+        if(req.params.id === '1'){
             count1 = 0;
         }
-        else if(req.params.id === 2){
+        else if(req.params.id === '2'){
             count2 = 0;
         }
-        else if(req.params.id === 3){
+        else if(req.params.id === '3'){
             count3 = 0;
         }
-        else if(req.params.id === 4){
+        else if(req.params.id === '4'){
             count4 = 0;
         }
-        else if(req.params.id === 5){
+        else if(req.params.id === '5'){
             count5 = 0;
         }
-        else if(req.params.id === 6){
+        else if(req.params.id === '6'){
             count6 = 0;
         }
-        console.log(req.params.id)
         sequelize.query(`DELETE FROM cart WHERE productId = ${req.params.id}`)
         .then(dbRes => {
             res.status(200).send("hi")})

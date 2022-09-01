@@ -9,31 +9,85 @@ const URL = 'http://localhost:4000'
 
 function add1(evt){
     evt.preventDefault();
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'added!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 700,
+      });
     axios.get(`${URL}/add1`)
     .then(res => console.log(res.data))}
     
 function add2(evt){
     evt.preventDefault();
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'added!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 700,
+      });
     axios.get(`${URL}/add2`)
     .then(res => console.log(res.data))}
 
 function add3(evt){
     evt.preventDefault();
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'added!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 700,
+      });
     axios.get(`${URL}/add3`)
     .then(res => console.log(res.data))}
 
 function add4(evt){
     evt.preventDefault();
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'added!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 700,
+      });
     axios.get(`${URL}/add4`)
     .then(res => console.log(res.data))}
 
 function add5(evt){
     evt.preventDefault();
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'added!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 700,
+      });
     axios.get(`${URL}/add5`)
     .then(res => console.log(res.data))}
     
 function add6(evt){
     evt.preventDefault();
+    Swal.fire({
+        toast: true,
+        icon: 'success',
+        title: 'added!',
+        animation: false,
+        position: 'bottom',
+        showConfirmButton: false,
+        timer: 700,
+      });
     axios.get(`${URL}/add6`)
     .then(res => console.log(res.data))}
 
