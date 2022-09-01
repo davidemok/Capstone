@@ -39,7 +39,7 @@ const getTable = async() => {
     cart.forEach(elem => {
         let img=1
                 if(elem.productid===1){
-                    img = './images/shawl.png'
+                    img = './images/pochette.png'
                 }else if(elem.productid===2){
                     img = './images/bag.png'
                 }
@@ -50,10 +50,10 @@ const getTable = async() => {
                     img = './images/cardigan.png'
                 }
                 else if(elem.productid===5){
-                    img = './images/bustier.png'
+                    img = './images/shawl.png'
                 }
                 else if(elem.productid===6){
-                    img = './images/pochette.png'
+                    img = './images/bustier.png'
                 }
                 
                 let cartCard = `<div class="cart-card">
