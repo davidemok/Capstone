@@ -23,4 +23,6 @@ app.get('/cart', fetchCart)
 app.put('/cart/:id', updateProduct)
 app.delete('/cart/:id', deleteProduct)
 
-app.listen(SERVER_PORT, console.log(`Bubberduck, we are a go at ${SERVER_PORT}`))
+const port = SERVER_PORT || 4000
+
+app.listen(port, console.log(`Bubberduck, we are a go at ${SERVER_PORT}`))
