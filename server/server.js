@@ -3,7 +3,6 @@ const express = require("express")
 const app = express()
 const cors = require("cors")
 const path = require('path')
-const {SERVER_PORT} = process.env
 
 app.use(cors())
 app.use(express.json())
@@ -23,6 +22,6 @@ app.get('/cart', fetchCart)
 app.put('/cart/:id', updateProduct)
 app.delete('/cart/:id', deleteProduct)
 
-const port = SERVER_PORT || 4000
+const port = process.env.PORT || 4000
 
-app.listen(port, console.log(`Bubberduck, we are a go at ${SERVER_PORT}`))
+app.listen(port, console.log(`Bubberduck, we are a go at ${port}`))
